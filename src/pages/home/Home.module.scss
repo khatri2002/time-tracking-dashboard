@@ -1,0 +1,158 @@
+// breakpoints for custom styles
+$lg: 1024px;
+
+.main {
+  @apply bg-very-dark-blue font-rubik flex min-h-screen items-center justify-center;
+
+  .container {
+    @apply mx-5 my-16 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6 md:grid-cols-4;
+    width: 70%;
+    @media (width < $lg) {
+      width: 100%;
+    }
+
+    .userCard {
+      @apply bg-dark-blue row-span-2 rounded-xl;
+
+      .header {
+        @apply bg-blue flex items-center gap-x-3 gap-y-9 rounded-xl px-5 pb-8 pt-8 sm:flex-col sm:items-start sm:px-7 sm:pb-20 sm:pt-7;
+
+        img {
+          @apply h-12 w-12 rounded-full sm:h-20 sm:w-20;
+          border-width: 3px;
+        }
+
+        .textContainer {
+          .subText {
+            @apply text-pale-blue text-sm;
+          }
+
+          .heroText {
+            @apply text-2xl font-extralight text-white sm:text-4xl;
+
+            span {
+              @apply sm:block;
+            }
+          }
+        }
+      }
+
+      .footer {
+        @apply px-7 py-5;
+
+        .itemsContainer {
+          @apply flex justify-between gap-y-3 sm:flex-col;
+
+          .item button {
+            @apply text-desaturated-blue transition duration-300 hover:text-white;
+
+            &.active {
+              @apply text-white;
+            }
+          }
+        }
+      }
+    }
+
+    .itemCard {
+      @apply sticky top-0 min-h-44 cursor-pointer overflow-hidden rounded-xl sm:relative sm:min-h-56 md:min-h-max;
+
+      .icon {
+        @apply absolute -top-2 right-4;
+        width: 4.5rem;
+      }
+
+      .content {
+        @apply bg-dark-blue absolute bottom-0 h-4/5 w-full rounded-xl p-5 transition-all duration-300 sm:p-7;
+
+        .labelContainer {
+          @apply flex items-center justify-between font-medium text-white;
+
+          button {
+            @apply p-1;
+
+            img {
+              @apply w-4 transition-all duration-200;
+            }
+
+            &:hover {
+              img {
+                filter: brightness(3) contrast(100%);
+              }
+            }
+          }
+        }
+
+        .valuesContainer {
+          @apply relative mt-4 flex justify-between overflow-hidden sm:mt-5 sm:flex-col;
+
+          .heroText {
+            @apply text-4xl font-thin text-white lg:text-5xl;
+          }
+
+          .subText {
+            @apply text-pale-blue mt-3 text-sm font-thin;
+          }
+
+          &:before {
+            content: "";
+            @apply bg-dark-blue absolute -top-full h-full w-full;
+          }
+
+          &.animate {
+            &:before {
+              animation: hideAndShow 1s ease-in-out;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .content {
+          height: 85%;
+          background-color: hsl(235, 46%, 35%);
+
+          .valuesContainer {
+            &::before {
+              background-color: hsl(235, 46%, 35%);
+            }
+          }
+        }
+      }
+
+      &.work {
+        @apply bg-light-red-1;
+      }
+      &.play {
+        @apply bg-soft-blue;
+      }
+      &.study {
+        @apply bg-light-red-2;
+      }
+      &.exercise {
+        @apply bg-lime-green;
+      }
+      &.social {
+        @apply bg-violet;
+      }
+      &.selfCare {
+        @apply bg-soft-orange;
+      }
+    }
+  }
+}
+
+@keyframes hideAndShow {
+  0% {
+    top: -100%;
+  }
+  25% {
+    top: 0%;
+  }
+  75% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
